@@ -14,6 +14,13 @@ public class TestInitiator {
 	
 	//This comment is added intentionally for git commit
 	
+	
+	
+	
+	
+	
+	//ExtentReport Practice----------
+	
 	WebDriver driver;
 	
 	public HomePageObject homepage;
