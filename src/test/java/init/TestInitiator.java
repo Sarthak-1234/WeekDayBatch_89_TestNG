@@ -12,6 +12,8 @@ import pageObject.HomePageObject;
 
 public class TestInitiator {
 	
+	//This comment is added intentionally for git commit
+	
 	WebDriver driver;
 	
 	public HomePageObject homepage;
