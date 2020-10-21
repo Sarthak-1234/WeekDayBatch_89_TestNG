@@ -14,7 +14,11 @@ import managers.PropertyFileReading;
 public class WebDriverIniator {
 	static WebDriver driver;
 	
+	
+	//This is done on master branch and creating new branch and commit
+	
 	public static WebDriver driverLaunch() throws IOException {
+		
 	    //reading browser from property file
 
 	String varBrowser = PropertyFileReading.getKey("config", "browser");	
