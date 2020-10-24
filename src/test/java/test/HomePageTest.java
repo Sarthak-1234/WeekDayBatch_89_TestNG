@@ -20,74 +20,31 @@ import utils.Xls_Reader;
 
 public class HomePageTest extends TestInitiator
 {
-	
-	//FunctionsCall + Assertions
-	
-	
-	
-	
-	
+	@Test
+	public void getTitleOfHomePage() {
+		Assert.assertEquals(homepage.getTitle(), "Book Bus Travels, AC Volvo Bus, rPool & Bus Hire - redBus India");
+	}
 	
 	@Test
-	public void bookTicket() throws IOException, InterruptedException {
-		
-		
-		homepage.googleTextbox();
-		homepage.writeSuggestionsInExcel();
-		
-		//System.out.println(obj.getCellData("Sheet1", "Name", 2)+"-------->"+obj.getCellData("Sheet1", "ID", 2));
-		//System.out.println(obj.getCellData("Sheet1", "Name", 3)+"-------->"+obj.getCellData("Sheet1", "ID", 3));
-		
-		
-		//To read full sheet
-		
-//		for(int i=2;i<=obj.getRowCount("Sheet1");i++) {
-//		//System.out.println(obj.getCellData("Sheet1", "Name", i);
-//		if(obj.getCellData("Sheet1", "Name", i).equalsIgnoreCase("Sarthak")) {
-//			Assert.assertEquals("123.0", obj.getCellData("Sheet1", "ID", i));
-//		}
-//		}
-		
-		//if name =Java then id 232323
-		
-//		obj.setCellData("Sheet1", "Name", 4, "ABCC");
-//		obj.setCellData("Sheet1", "ID", 4, "56");
-//		
-//		
-//		System.out.println(obj.getCellData("Sheet1", "Name", 4)+"----->"+obj.getCellData("Sheet1", "ID", 4));
-		
-		
-		
-		
-		
-		
-
-
-		
-		
-		
-		
+	public void checkHeaderComponents() {
+		Assert.assertEquals(homepage.checkColorOfLogo(), "rgba(0, 0, 238, 1)", "Logo Color is not matching");
+		Assert.assertTrue(homepage.checkRedBusLogo());
+		Assert.assertEquals(homepage.checkTextOfLogo(), "redbus", "Text of logo is not matching");
+		Assert.assertTrue(homepage.checkBusTicket());
+		Assert.assertTrue(homepage.checkrPool());
+		Assert.assertTrue(homepage.checkBusHire());
+		Assert.assertTrue(homepage.checkHelp());
+		Assert.assertTrue(homepage.checkManageBooking());
+		Assert.assertTrue(homepage.checkProfile());
+	}
 	
-		//Function call + assertions
-		//bushirepage.getCurrentTitle() ------this function belongs to bus hire object...and we are calling in HomePageTest
-		
-//		String cityVar = PropertyFileReading.getKey("homepageData","fromCity");
-//		
-//		homepage.enterTextInFromField(cityVar);
-//		homepage.selectCityFromDropdown(cityVar);	
-//		System.out.println(PropertyFileReading.getKey("homepageData", "toCity"));
-		
-		
-		
+	@Test
+	public void checkSearchBus() {
+		//try yourself
 	}
 
-	
-	
-	
-	
-	
-	
-	
-
-
+	@Test
+	public void bookTicket() {
+		
+	}
 }

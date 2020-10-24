@@ -6,13 +6,13 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import managers.PropertyFileReading;
 import utils.Xls_Reader;
-
-
 
 public class HomePageObject {
 	
@@ -20,69 +20,90 @@ public class HomePageObject {
 	
 	public HomePageObject(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 	
-	//can function name same as constructor name
+	//These are our locators of Homepage
 	
-	//Locators
+	@FindBy(css="a.redbus-logo.home-redirect")
+	public WebElement redBusLogo;
+	
+	@FindBy(css="a#redBus")
+	public WebElement busTicket;
+	
+	@FindBy(css="a#cars")
+	public WebElement rPool;
+	
+	@FindBy(css="a[id='redBus Bus Hire']")
+	public WebElement busHire;
+	
+	@FindBy(xpath="//a[text()='Help']")
+	public WebElement help;
+	
+	@FindBy(css="div#manageHeaderdd")
+	public WebElement manageBooking;
+	
+	@FindBy(css="div#signin-block")
+	public WebElement profileDropDown;
+	
+	
+	
+//	@FindBy(xpath="//a[]xxxxx")
+//	public WebElement redBusLogo1;
+//	
+//	@FindBy(id="x")
+//	public WebElement redBusLogo2;
+	
+	
+	
+	//These are functions of homepage
 
-	//Functions
-	public void enterTextInFromField(String fromVar) throws IOException {
-		
-		//Intentiaonally calling property file
-		
-		PropertyFileReading.getKey("", "");
-		driver.findElement(By.id("src")).sendKeys(fromVar);
-	}
-
-	public void selectCityFromDropdown(String fromVar) {
-		List<WebElement> allOptions = driver.findElements(By.xpath("//ul[@class='autoFill']/li"));
-		
-		for(WebElement e: allOptions) {
-			//System.out.println(e.getText());
-			if(e.getText().contains(fromVar)) {
-				e.click();
-				break;
-				
-				//break -----skip from for / foreach loop
-				//continue -----skip the current iteration   ----for (int i=1;i<=5;i++)   ----if(i==4) = continue;
-			}
-		}
-	}
-	
-	public void googleTextbox() throws InterruptedException {
-		driver.findElement(By.name("q")).sendKeys("Automation Testing");
-		Thread.sleep(3000);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("(//input[@aria-label='Google Search'])[1]"))));
-		
-		
-	}
-	
-	//BDD = Cucumber
-	
-	//TDD = 
-
-	public void writeSuggestionsInExcel() {
-		
-		
-		List<WebElement> suggestions = driver.findElements(By.xpath("//ul[@class='erkvQe']//span"));
-		Xls_Reader obj = new Xls_Reader("src\\test\\resources\\excelFiles\\Data.xlsx");
-		System.out.println("Suggestions = "+suggestions.size());
-		System.out.println(suggestions.get(2).getText());
-		
-		for(int i=2;i<=suggestions.size()+1;i++) {
-			//obj.setCellData(sheetName, colName, rowNum, data)
-		obj.setCellData("Sheet1", "G", i, suggestions.get(i-2).getText());
-		}
-		
-	
-		
-	//	<li name="Submit" type="Submit" aria-label="Submit">Submit</li>
-		
-		
-		
+	public String getTitle() {
+		return driver.getTitle();
 	}
 
+	public boolean checkRedBusLogo() {
+		return redBusLogo.isDisplayed();
+	}
+	
+	public String checkTextOfLogo() {
+		return redBusLogo.getText();
+	}
+	
+	public String checkColorOfLogo() {
+		return redBusLogo.getCssValue("color");
+	}
+	
+	public String checkBGColorOfLogo() {
+		return redBusLogo.getCssValue("bg-color");
+	}
+	
+	public boolean checkBusTicket() {
+		return busTicket.isDisplayed();
+	}
+
+	public boolean checkrPool() {
+		return rPool.isDisplayed();
+	}
+
+	public boolean checkBusHire() {
+		return busHire.isDisplayed();
+	}
+
+	public boolean checkHelp() {
+		return help.isDisplayed();
+	}
+
+	public boolean checkManageBooking() {
+		return manageBooking.isDisplayed();
+	}
+
+	public boolean checkProfile() {
+		return profileDropDown.isDisplayed();
+	}
+
+	
+
+	
 	
 }

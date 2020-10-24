@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10546" started-at="2020-10-15T15:44:07Z" finished-at="2020-10-15T15:44:18Z">
+  <suite name="Default suite" duration-ms="17066" started-at="2020-10-24T08:38:24Z" finished-at="2020-10-24T08:38:41Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10546" started-at="2020-10-15T15:44:07Z" finished-at="2020-10-15T15:44:18Z">
+    <test name="Default test" duration-ms="17066" started-at="2020-10-24T08:38:24Z" finished-at="2020-10-24T08:38:41Z">
       <class name="test.HomePageTest">
-        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:test.HomePageTest@5e5792a0]" name="launchBrowser" is-config="true" duration-ms="3866" started-at="2020-10-15T15:44:07Z" finished-at="2020-10-15T15:44:11Z">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:test.HomePageTest@5e5792a0]" name="launchBrowser" is-config="true" duration-ms="9193" started-at="2020-10-24T08:38:24Z" finished-at="2020-10-24T08:38:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="launchURL()[pri:0, instance:test.HomePageTest@5e5792a0]" name="launchURL" is-config="true" duration-ms="1577" started-at="2020-10-15T15:44:11Z" finished-at="2020-10-15T15:44:13Z">
+        <test-method status="PASS" signature="launchURL()[pri:0, instance:test.HomePageTest@5e5792a0]" name="launchURL" is-config="true" duration-ms="4265" started-at="2020-10-24T08:38:34Z" finished-at="2020-10-24T08:38:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchURL -->
-        <test-method status="PASS" signature="bookTicket()[pri:0, instance:test.HomePageTest@5e5792a0]" name="bookTicket" duration-ms="5089" started-at="2020-10-15T15:44:13Z" finished-at="2020-10-15T15:44:18Z">
+        <test-method status="PASS" signature="checkHeaderComponents()[pri:0, instance:test.HomePageTest@5e5792a0]" name="checkHeaderComponents" duration-ms="619" started-at="2020-10-24T08:38:38Z" finished-at="2020-10-24T08:38:39Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- bookTicket -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:test.HomePageTest@5e5792a0]" name="closeBrowser" is-config="true" duration-ms="0" started-at="2020-10-15T15:44:18Z" finished-at="2020-10-15T15:44:18Z">
+        </test-method> <!-- checkHeaderComponents -->
+        <test-method status="PASS" signature="launchURL()[pri:0, instance:test.HomePageTest@5e5792a0]" name="launchURL" is-config="true" duration-ms="2879" started-at="2020-10-24T08:38:39Z" finished-at="2020-10-24T08:38:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchURL -->
+        <test-method status="PASS" signature="getTitleOfHomePage()[pri:0, instance:test.HomePageTest@5e5792a0]" name="getTitleOfHomePage" duration-ms="64" started-at="2020-10-24T08:38:41Z" finished-at="2020-10-24T08:38:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTitleOfHomePage -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:test.HomePageTest@5e5792a0]" name="closeBrowser" is-config="true" duration-ms="0" started-at="2020-10-24T08:38:41Z" finished-at="2020-10-24T08:38:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->

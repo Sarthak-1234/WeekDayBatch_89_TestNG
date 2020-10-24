@@ -40,7 +40,7 @@ public class TestInitiator {
 	
 	@BeforeMethod
 	public void launchURL() {
-		driver.get("https://www.google.com/");
+		driver.get("https://www.redbus.in/");
 	}
 	
 	@AfterClass
