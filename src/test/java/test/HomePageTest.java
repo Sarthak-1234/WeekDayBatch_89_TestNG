@@ -20,31 +20,44 @@ import utils.Xls_Reader;
 
 public class HomePageTest extends TestInitiator
 {
-	@Test
-	public void getTitleOfHomePage() {
-		Assert.assertEquals(homepage.getTitle(), "Book Bus Travels, AC Volvo Bus, rPool & Bus Hire - redBus India");
-	}
+//	@Test
+//	public void getTitleOfHomePage() {
+//		Assert.assertEquals(homepage.getTitle(), "Book Bus Travels, AC Volvo Bus, rPool & Bus Hire - redBus India");
+//	}
+//	
+//	@Test
+//	public void checkHeaderComponents() {
+//		Assert.assertEquals(homepage.checkColorOfLogo(), "rgba(0, 0, 238, 1)", "Logo Color is not matching");
+//		Assert.assertTrue(homepage.checkRedBusLogo());
+//		Assert.assertEquals(homepage.checkTextOfLogo(), "redbus", "Text of logo is not matching");
+//		Assert.assertTrue(homepage.checkBusTicket());
+//		Assert.assertTrue(homepage.checkrPool());
+//		Assert.assertTrue(homepage.checkBusHire());
+//		Assert.assertTrue(homepage.checkHelp());
+//		Assert.assertTrue(homepage.checkManageBooking());
+//		Assert.assertTrue(homepage.checkProfile());
+//	}
 	
-	@Test
-	public void checkHeaderComponents() {
-		Assert.assertEquals(homepage.checkColorOfLogo(), "rgba(0, 0, 238, 1)", "Logo Color is not matching");
-		Assert.assertTrue(homepage.checkRedBusLogo());
-		Assert.assertEquals(homepage.checkTextOfLogo(), "redbus", "Text of logo is not matching");
-		Assert.assertTrue(homepage.checkBusTicket());
-		Assert.assertTrue(homepage.checkrPool());
-		Assert.assertTrue(homepage.checkBusHire());
-		Assert.assertTrue(homepage.checkHelp());
-		Assert.assertTrue(homepage.checkManageBooking());
-		Assert.assertTrue(homepage.checkProfile());
-	}
-	
-	@Test
-	public void checkSearchBus() {
-		//try yourself
-	}
+//	@Test
+//	public void checkSearchBus() throws InterruptedException {
+//		homepage.enterFromCity();
+//		homepage.enterTocity();
+//		homepage.date();
+//		homepage.searchButton();
+//	}
 
 	@Test
-	public void bookTicket() {
+	public void bookTicket() throws InterruptedException {
 		
+		homepage.selectFromCity();
+		homepage.selectToCity();
+		homepage.selectDate();
+		homepage.searchBusButton();
+		homepage.closeSafetyPopup();
+		homepage.viewSeats();
+		homepage.clickSeatFromCanvas();
+		homepage.selectTime();
+		
+		Assert.assertTrue(homepage.checkProceedToContinue());
 	}
 }

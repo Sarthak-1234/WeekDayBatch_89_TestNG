@@ -21,6 +21,7 @@ public class WebDriverIniator {
 	if(varBrowser.equalsIgnoreCase("Chrome")) {
 	System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver_windows.exe");
 	driver = new ChromeDriver();
+	driver.manage().window().maximize();
 	} else if(varBrowser.equalsIgnoreCase("Firefox")) {
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
 		driver = new FirefoxDriver();

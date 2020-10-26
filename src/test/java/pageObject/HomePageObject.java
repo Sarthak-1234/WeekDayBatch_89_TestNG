@@ -1,18 +1,14 @@
 package pageObject;
 
-import java.io.IOException;
 import java.util.List;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import managers.PropertyFileReading;
-import utils.Xls_Reader;
 
 public class HomePageObject {
 	
@@ -47,7 +43,6 @@ public class HomePageObject {
 	public WebElement profileDropDown;
 	
 	
-	
 //	@FindBy(xpath="//a[]xxxxx")
 //	public WebElement redBusLogo1;
 //	
@@ -57,6 +52,35 @@ public class HomePageObject {
 	
 	
 	//These are functions of homepage
+	
+	
+	@FindBy(css="input#src")
+	public WebElement fromTextbox;
+	
+	@FindBy(css="ul.autoFill>li")
+	public List<WebElement> dropDown;
+	
+	@FindBy(css="input#dest")
+	public WebElement toTextbox;
+	
+	@FindBy(css="td.current.day")
+	public WebElement date;
+	
+	@FindBy(css="button#search_btn")
+	public WebElement searchBusButton;
+	
+	@FindBy(css="div.close")
+	public WebElement closeSafetyPopup;
+	
+	@FindBy(xpath="(//div[text()='View Seats'])[1]")
+	public WebElement viewSeats;
+	
+	@FindBy(css="canvas[data-type='lower']")
+	public WebElement busCanvas;
+	
+	@FindBy(xpath="//button[text()='Proceed to book']")
+	public WebElement proceedToContButton;
+	
 
 	public String getTitle() {
 		return driver.getTitle();
@@ -101,6 +125,93 @@ public class HomePageObject {
 	public boolean checkProfile() {
 		return profileDropDown.isDisplayed();
 	}
+
+	public void selectFromCity() throws InterruptedException {
+		fromTextbox.sendKeys("Kashmiri Gate");
+		Thread.sleep(2000);
+		for(WebElement e: dropDown) {
+			if(e.getText().contains("Kashmiri Gate")) {
+				e.click();
+				break;
+			}
+		}
+	}
+
+	public void selectToCity() throws InterruptedException {
+		toTextbox.sendKeys("Chandigarh");
+		Thread.sleep(2000);
+		for(WebElement e: dropDown) {
+			if(e.getText().contains("Chandigarh")) {
+				e.click();
+				break;
+			}
+		}
+		
+	}
+
+	public void selectDate() {
+		date.click();
+	}
+	
+	public void searchBusButton() {
+		searchBusButton.click();
+	}
+	
+	public void closeSafetyPopup() throws InterruptedException {
+		
+//		if(closeSafetyPopup.isDisplayed()) {
+//			closeSafetyPopup.click();
+//		} else {
+//			System.out.println("Popup is not appeared");
+//		}
+		Thread.sleep(2000);
+		try {
+		closeSafetyPopup.click();
+		}catch(Exception e) {
+			System.out.println("Safety Popup is not appeared");
+		}
+	}
+
+	public void viewSeats() {
+		
+		//div.result-sec>ul.bus-items:nth-child(2)>div:nth-child(1) div.button.view-seats.fr
+		
+		//(//div[text()='View Seats'])[1]
+		
+		
+		//Scroll
+		
+//		TakesScreenshot ts = (TakesScreenshot)driver;
+//		ts.getScreenshotAs(target)
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0, 200)");
+		
+		viewSeats.click();
+		
+	}
+
+	
+
+	public void clickSeatFromCanvas() throws InterruptedException {
+		Thread.sleep(2000);
+		Actions act = new Actions(driver);
+		
+		act.moveToElement(busCanvas, 379, 105).click().build().perform();
+	}
+
+	public void selectTime() {
+		// TODO Auto-generated method stub
+		
+		//This you can implement
+		
+	}
+
+	public boolean checkProceedToContinue() {
+		return proceedToContButton.isDisplayed();
+	}
+
+	
 
 	
 

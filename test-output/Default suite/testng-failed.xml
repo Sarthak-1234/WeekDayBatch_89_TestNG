@@ -5,10 +5,10 @@
     <classes>
       <class name="test.HomePageTest">
         <methods>
+          <include name="bookTicket"/>
           <include name="closeBrowser"/>
           <include name="launchURL"/>
           <include name="launchBrowser"/>
-          <include name="checkHeaderComponents"/>
         </methods>
       </class> <!-- test.HomePageTest -->
     </classes>
