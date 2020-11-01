@@ -9,8 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import init.TestInitiator;
@@ -18,8 +21,11 @@ import managers.PropertyFileReading;
 import pageObject.HomePageObject;
 import utils.Xls_Reader;
 
+//@Listeners(utils.Listener.class)
 public class HomePageTest extends TestInitiator
 {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(HomePageTest.class);
 //	@Test
 //	public void getTitleOfHomePage() {
 //		Assert.assertEquals(homepage.getTitle(), "Book Bus Travels, AC Volvo Bus, rPool & Bus Hire - redBus India");
@@ -44,10 +50,14 @@ public class HomePageTest extends TestInitiator
 //		homepage.enterTocity();
 //		homepage.date();
 //		homepage.searchButton();
+	
+	//Assertions....
 //	}
 
 	@Test
-	public void bookTicket() throws InterruptedException {
+	public void bookTicket() throws InterruptedException, IOException {
+		
+		LOGGER.info("Running testcase of homepagetest");
 		
 		homepage.selectFromCity();
 		homepage.selectToCity();

@@ -1,5 +1,6 @@
 package pageObject;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import managers.PropertyFileReading;
 
 public class HomePageObject {
 	
@@ -126,22 +129,24 @@ public class HomePageObject {
 		return profileDropDown.isDisplayed();
 	}
 
-	public void selectFromCity() throws InterruptedException {
-		fromTextbox.sendKeys("Kashmiri Gate");
+	public void selectFromCity() throws InterruptedException, IOException {
+		String city = PropertyFileReading.getKey("homepageData", "fromCity");
+		fromTextbox.sendKeys(city);
 		Thread.sleep(2000);
 		for(WebElement e: dropDown) {
-			if(e.getText().contains("Kashmiri Gate")) {
+			if(e.getText().contains(city)) {
 				e.click();
 				break;
 			}
 		}
 	}
 
-	public void selectToCity() throws InterruptedException {
-		toTextbox.sendKeys("Chandigarh");
+	public void selectToCity() throws InterruptedException, IOException {
+		String cityTo = PropertyFileReading.getKey("homepageData", "toCity");
+		toTextbox.sendKeys(cityTo);
 		Thread.sleep(2000);
 		for(WebElement e: dropDown) {
-			if(e.getText().contains("Chandigarh")) {
+			if(e.getText().contains(cityTo)) {
 				e.click();
 				break;
 			}
@@ -165,6 +170,14 @@ public class HomePageObject {
 //			System.out.println("Popup is not appeared");
 //		}
 		Thread.sleep(2000);
+		
+		try {
+			//Garima is present in class -  -- Garima will teach  ----error
+		} catch(Exception e) {
+			System.out.println("Safura and Priyanka will teach");
+		}
+		
+		
 		try {
 		closeSafetyPopup.click();
 		}catch(Exception e) {
