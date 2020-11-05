@@ -6,11 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import com.aventstack.extentreports.ExtentReports;
+
 import pageObject.BusHireObject;
 import pageObject.HomePageObject;
+import reporting.ExtentManager;
+import reporting.ReportingClass;
 
 public class TestInitiator {
 	
@@ -18,7 +23,7 @@ public class TestInitiator {
 	
 	//This comment is added intentionally for git commit
 	
-	
+	public static ExtentReports report;
 	
 	
 	
@@ -35,6 +40,11 @@ public class TestInitiator {
 		
 		driver = WebDriverIniator.driverLaunch();
 		pageObjects();
+		report = ExtentManager.setUp("Extent Report");
+		//this line will give u empty report
+		
+		//This report is transferred to Reporting Class.
+		
 	}
 	
 	public void pageObjects() {
@@ -54,6 +64,11 @@ public class TestInitiator {
 	public void closeBrowser() {
 		LOGGER.info("Closing Driver");
 		driver.close();
+	}
+	
+	@AfterSuite
+	public void publishReport() {
+		ReportingClass.putReport();
 	}
 	
 	

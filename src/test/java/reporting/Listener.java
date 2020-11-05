@@ -1,4 +1,6 @@
-package utils;
+package reporting;
+
+import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,22 +16,36 @@ public class Listener implements ITestListener{
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		LOGGER.info("Starting testcase"+ result.getName());
+		//LOGGER.info("Starting testcase"+ result.getName());
+		
+		ReportingClass.initScenario(result.getName());
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		LOGGER.info("Testcase Pass" + result.getName());
+		//LOGGER.info("Testcase Pass" + result.getName());
+		
+		ReportingClass.infoLogPass(result.getName()+"---------> TestCassed Passed");
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		LOGGER.info("Testcase Fail" + result.getName());
+		//LOGGER.info("Testcase Fail" + result.getName());
+		
+		
+		try {
+			ReportingClass.reportFailure(result.getName()+"---------> TestCassed Failed", TestInitiator.driver);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		LOGGER.info("Testcase Skipped" + result.getName());
+		//LOGGER.info("Testcase Skipped" + result.getName());
+		
+		ReportingClass.infoLogSkip(result.getName()+"------------ TestCase Skipped");
 	}
 
 	@Override

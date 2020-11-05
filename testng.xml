@@ -4,7 +4,7 @@
 
 <listeners>
 
-  <listener class-name = "utils.Listener"/>
+  <listener class-name = "reporting.Listener"/>
 
  </listeners>
  
@@ -12,7 +12,7 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="test.BusHireTest"/>
-      
+      <class name="test.HomePageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

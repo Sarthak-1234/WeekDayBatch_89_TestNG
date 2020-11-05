@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import managers.PropertyFileReading;
+import utils.CommonFunctions;
 
 public class HomePageObject {
 	
@@ -197,8 +198,7 @@ public class HomePageObject {
 //		TakesScreenshot ts = (TakesScreenshot)driver;
 //		ts.getScreenshotAs(target)
 		
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0, 200)");
+		CommonFunctions.scrollDownToPixels(200);
 		
 		viewSeats.click();
 		
@@ -208,9 +208,7 @@ public class HomePageObject {
 
 	public void clickSeatFromCanvas() throws InterruptedException {
 		Thread.sleep(2000);
-		Actions act = new Actions(driver);
-		
-		act.moveToElement(busCanvas, 379, 105).click().build().perform();
+		CommonFunctions.moveToElementWithParticularPixels(busCanvas, 379, 105);
 	}
 
 	public void selectTime() {
@@ -218,10 +216,22 @@ public class HomePageObject {
 		
 		//This you can implement
 		
+		//dummy -----CommonFunctions.scrollDownToPixels(600);
+		
 	}
 
 	public boolean checkProceedToContinue() {
 		return proceedToContButton.isDisplayed();
+	}
+	
+	
+//	public void clickOnLoginButton() {
+//		CommonFunctions.clickUsingJavaSciptExecutor(viewSeats);
+//	}
+	
+	
+	public void enterSomeTextUsingjS() {
+		CommonFunctions.typeUsingJavaScriptExecutor("abc", viewSeats);
 	}
 
 	
